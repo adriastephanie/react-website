@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         
         <h1>Página Principal</h1>
-        <Button variant="primary">Primary</Button>{' '}
+        <Button variant="success">Success</Button>{' '}
         <a
           className="App-link"
           href="https://reactjs.org"
