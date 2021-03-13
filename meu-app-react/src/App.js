@@ -1,13 +1,13 @@
-
+import React from 'react';
+import { Button } from 'react-bootstrap';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+        <h1>Página Principal</h1>
+        <Button variant="primary">Primary</Button>{' '}
         <a
           className="App-link"
           href="https://reactjs.org"
