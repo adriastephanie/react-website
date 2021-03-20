@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Navbar from './components/NavBar'
+import CarouselHome from './components/CarouselHome'
+
 function App() {
   return ( 
-    <Navbar/>
+    <Fragment>
+      <Navbar/>
+      <CarouselHome/>
+
+    </Fragment>
+
   
  );
 }
