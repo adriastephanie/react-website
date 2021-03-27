@@ -11,7 +11,8 @@ export default function CarouselHome () {
     <img
       className="d-block w-100"
       src={b1}
-      alt="First slide"
+      alt="First slide" 
+      max-width= '10px'
     />
     <Carousel.Caption>
       <h3>Slide 1</h3>
@@ -21,7 +22,7 @@ export default function CarouselHome () {
   <Carousel.Item>
     <img
       className="d-block w-100"
-      src="holder.js/800x400?text=Second slide&bg=282c34"
+      src={b2}
       alt="Second slide"
     />
 
@@ -33,7 +34,7 @@ export default function CarouselHome () {
   <Carousel.Item>
     <img
       className="d-block w-100"
-      src="holder.js/800x400?text=Third slide&bg=20232a"
+      src={b3}
       alt="Third slide"
     />
 
