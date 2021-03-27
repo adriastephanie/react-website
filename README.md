@@ -29,6 +29,6 @@ cd meu-app-react
 yarn start
 ```
 
-## Installation
+## License
 
 MIT
