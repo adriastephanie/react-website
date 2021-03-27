@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import './login.css'
-import firebase from '../../config/firebase'
-import 'firebase/auth'
-
-
+import './login.css';
+import firebase from '../../config/firebase';
+import 'firebase/auth';
 
 function Login(){
     
