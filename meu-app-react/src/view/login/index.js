@@ -12,10 +12,10 @@ function Login(){
 
     function Logar() {
         firebase.auth().signInWithEmailAndPassword(email, senha).then(resultado => {
-            alert('DEU CERTO')
+            alert('DEU CERTO');
 
         }).catch(erro => {
-            alert('ERROR')
+            alert('LOGIN COM ERRO');
 
         });
     }
