@@ -1,23 +1,26 @@
 import React from 'react';
 import { Navbar, Nav, Form, FormControl, Button  } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import App from '../../App';
+import './navbar.css';
 
 export default function NavBar () {
 
    return (
 
-    <Navbar bg="dark" variant="dark">
-    <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-    <Nav className="mr-auto">
-      <Nav.Link href="#home">Home</Nav.Link>
-      <Nav.Link href="#features">Features</Nav.Link>
-      <Nav.Link href="#pricing">Pricing</Nav.Link>
-    </Nav>
-    <Form inline>
-      <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-      <Button variant="outline-info">Search</Button>
-    </Form>
-  </Navbar>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <span className="navbar-brand font-weight-bold" href="#">Eventos</span>
+      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon"></span>
+      </button>
+      <div className="collapse navbar-collapse" id="navbarNav">
+        <ul className="navbar-nav">
+          <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>
+          <li className="nav-item"><Link className="nav-link" to="/login">Login</Link></li>
+          <li className="nav-item"><Link className="nav-link" to="/novousuario">Cadastrar</Link></li>
+        </ul>
+      </div>
+  </nav>
 
 
    );
