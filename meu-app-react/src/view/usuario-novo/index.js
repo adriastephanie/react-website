@@ -9,8 +9,12 @@ function NovoUsuario() {
     const [senha, setSenha] = useState();
     const [msgTipo, setMsgTipo] = useState();
     const [msg, setMsg] = useState();
+    const [carregando, setCarregando] = useState();
 
     function cadastrar(){
+
+        setCarregando(1);
+
         setMsgTipo(null);
 
         if(!email || !senha){
@@ -21,10 +25,13 @@ function NovoUsuario() {
 
         firebase.auth().createUserWithEmailAndPassword(email, senha).then(resultado => 
             {
+                setCarregando(0);
                 setMsgTipo('sucesso')
 
+
             }).catch(erro => 
-                { setMsgTipo('erro')
+                { setCarregando(0);
+                    setMsgTipo('erro')
                     
                     switch(erro.message) 
                     {
@@ -58,8 +65,12 @@ function NovoUsuario() {
                 <input onChange= {(e) => setEmail(e.target.value)} type="email" className='form-control my-2' placeholder="Email"></input>
                 <input onChange= {(e) => setSenha(e.target.value)} type="password" className='form-control my-2' placeholder="Senha"></input>
 
-                <button onClick={cadastrar} class="w-100 btn-lg btn-cadastro" type="button">Cadastre-se</button>
+                {
+                    carregando ? <div class="spinner-border text-info" role="status"><span class="sr-only">Loading...</span></div>
+                    : <button onClick={cadastrar} class="w-100 btn-lg btn-cadastro" type="button">Cadastre-se</button>
+                }
 
+                
                 <div className="mgs-login text-black text-center mx-2">
                     
                     {msgTipo === 'sucesso' && <span><strong>Aí sim!</strong>Você está cadastrado em nosso site!!! &#128077;</span>}
