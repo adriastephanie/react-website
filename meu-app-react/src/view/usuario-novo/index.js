@@ -19,15 +19,37 @@ function NovoUsuario() {
             return;
         }
 
-        firebase.auth().signInWithEmailAndPassword(email, senha).then(resultado => {
-            setMsgTipo('sucesso');
+        firebase.auth().createUserWithEmailAndPassword(email, senha).then(resultado => 
+            {
+                setMsgTipo('sucesso')
 
-        }).catch(erro => {
-            alert('erro');
+            }).catch(erro => 
+                { setMsgTipo('erro')
+                    
+                    switch(erro.message) 
+                    {
+                        case 'Password should be at least 6 characters':
+                            setMsg('A senha deve ter pelo menos 6 caracteres!');
+                            break;
 
-        });
+                        case 'The email address is already in use by another account.':
+                            setMsg('Este email já está sendo utilizado por outro usuário');
+                            break;
+                        
+                        case 'The email address is badly formatted.':
+                            setMsg('O formato do e-mail é inválido');
+                            break;
+                        
+                        default:
+                            setMsg('Não foi possível cadastrar. Tente Novamente mais tarde.');
+                            break;
+                    }
+
+            })
+
+    
     }
-
+    
     return(
         <div className='form-cadastro'>
             <form className='text-center form-login mx-auto mt-5'>
@@ -36,7 +58,7 @@ function NovoUsuario() {
                 <input onChange= {(e) => setEmail(e.target.value)} type="email" className='form-control my-2' placeholder="Email"></input>
                 <input onChange= {(e) => setSenha(e.target.value)} type="password" className='form-control my-2' placeholder="Senha"></input>
 
-                <button onClick={cadastrar} class="w-100 btn-lg btn-cadastro" type="button">Logar</button>
+                <button onClick={cadastrar} class="w-100 btn-lg btn-cadastro" type="button">Cadastre-se</button>
 
                 <div className="mgs-login text-black text-center mx-2">
                     
