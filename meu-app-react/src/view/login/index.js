@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './login.css';
+import {Link} from 'react-router-dom';
 import firebase from '../../config/firebase';
 import 'firebase/auth';
 
@@ -47,7 +48,7 @@ function Login(){
                     <div className="opcoes-login mt-3 text-center">
                         <a href="#" className="mx-2">Quero recuperar minha senha</a>
                         <span>&#9733;</span>
-                        <a href="#" className="mx-2">Quero me cadastrar</a>
+                        <Link to='novousuario' className="mx-2">Quero me cadastrar</Link>
                     </div>
                     
                     <p className="mt-5 mb-3 text-muted">&copy; EMPRESA EXEMPLO LTDA 2020–2021</p>
