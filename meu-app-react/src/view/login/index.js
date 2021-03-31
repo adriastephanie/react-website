@@ -1,9 +1,11 @@
 import React, { Fragment, useState } from 'react';
 import './login.css';
-import {Link} from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Navbar from '../../components/navbar';
 import firebase from '../../config/firebase';
 import 'firebase/auth';
+import {useSelector, useDispatch } from 'react-redux';
+import Examples from '../popup';
 
 function Login(){
     
@@ -11,20 +13,28 @@ function Login(){
     const [senha, setSenha] = useState();
     const [msgTipo, setMsgTipo] = useState();
 
+    const dispatch = useDispatch();
+
     function Logar() {
         firebase.auth().signInWithEmailAndPassword(email, senha).then(resultado => {
             setMsgTipo('sucesso');
+            dispatch({type: 'Log_IN', usuarioEmail: email});
 
         }).catch(erro => {
             setMsgTipo('erro');
 
         });
+
     }
+
 
     return(
         <Fragment>
             <Navbar/>
             <div className="login-content d-flex align-items-center">
+                {
+                    useSelector(state => state.usuarioLogado > 0 ? <Redirect to='/' /> : null)
+                }
 
                 <main className="form-signin mx-auto">
                     <form>
@@ -41,6 +51,7 @@ function Login(){
 
                         <button onClick={Logar} class="w-100 btn btn-lg btn-login" type="button">Logar</button>
                         
+                        
                         <div className="mgs-login text-black text-center mx-2">
                             {msgTipo === 'sucesso' && <span><strong>Aí sim!</strong>Você está conectado! &#128077;</span>}
                             {msgTipo === 'erro' && <span><strong>Ops!</strong>Verifique se a senha ou e-mail estão corretos &#128078;</span>}
@@ -52,6 +63,7 @@ function Login(){
                             <a href="#" className="mx-2">Quero recuperar minha senha</a>
                             <span>&#9733;</span>
                             <Link to='novousuario' className="mx-2">Quero me cadastrar</Link>
+                            <Link to='/modal' className="mx-2">Modal</Link>
                         </div>
                         
                         <p className="mt-5 mb-3 text-muted">&copy; EMPRESA EXEMPLO LTDA 2020–2021</p>
