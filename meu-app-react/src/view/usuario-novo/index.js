@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import './usuario-novo.css';
-import Navbar from '../../components/navbar';
+import Navbar from '../../components/navbar'
 import firebase from '../../config/firebase';
 import 'firebase/auth';
 

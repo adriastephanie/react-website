@@ -5,13 +5,15 @@ import Navbar from '../../components/navbar';
 import firebase from '../../config/firebase';
 import 'firebase/auth';
 import {useSelector, useDispatch } from 'react-redux';
-import Examples from '../popup';
+import ModalComponent from '../../view/popup';
 
 function Login(){
     
     const [email, setEmail] = useState();
     const [senha, setSenha] = useState();
     const [msgTipo, setMsgTipo] = useState();
+    const [modal, setModal] = useState(false);
+
 
     const dispatch = useDispatch();
 
@@ -27,9 +29,13 @@ function Login(){
 
     }
 
+    function handleModal() {
+        setModal(!modal) 
+    }
+
 
     return(
-        <Fragment>
+        <>
             <Navbar/>
             <div className="login-content d-flex align-items-center">
                 {
@@ -63,15 +69,59 @@ function Login(){
                             <a href="#" className="mx-2">Quero recuperar minha senha</a>
                             <span>&#9733;</span>
                             <Link to='novousuario' className="mx-2">Quero me cadastrar</Link>
-                            <Link to='/modal' className="mx-2">Modal</Link>
+                            <button className="w-100 btn btn-lg btn-login" type="button" onClick={handleModal}>Modal</button>
+                            
+
                         </div>
                         
                         <p className="mt-5 mb-3 text-muted">&copy; EMPRESA EXEMPLO LTDA 2020–2021</p>
                     </form>
                 </main>
+                <ModalComponent handleClose={handleModal} show={modal} title="Experimento 1">
+                <form>
+  
+                     <div className="mb-3">
+                         <label className="form-label">Primeiro Nome:</label><br/>
+                         <input type="text" class="form-control" id="recipient-name" placeholder="Digite seu Nome aqui"></input><br/>
+    
+                         <label>Ultimo Sobrenome:</label><br/>
+                         <input type="text" className="form-control" name="LastName" placeholder="Digite seu Sobrenome aqui"></input><br/>
+    
+                         <label for="fname">Email:</label><br/>
+                         <input type="email" className="form-control" name="email" placeholder="Digite seu E-mail"></input><br/>
+                     </div>
+    
+                     <div class="mb-3 form-check">
+                         <label >Qual o seu sexo?</label><br/>
+                         <input type="radio" name="sexo" value="masculino"/>Masculino <br/>
+                         <input type="radio" name="sexo" value="feminino"/>Feminino <br/>
+    
+                     </div>
+    
+                     <div class="mb-3 form-check">
+                         <label for="fname">Quais dos esportes abaixo você pratica?</label><br/>
+                         <input type="checkbox" name="esporte" value="natacao" />Natação<br/>
+                         <input type="checkbox" name="esporte" value="volei" />Vôlei<br/>
+    
+                    </div>
+    
+                                    
+                     <label for="cidade">Qual sua Cidade?</label><br/>
+                     <select name="cidade" className="form-control" id="cidade">
+                         <option value="saopaulo">São Paulo</option>
+                         <option value="manaus">Manaus</option>
+                         <option value="campinas">Campinas</option>
+                         <option value="fortaleza">Fortaleza</option>
+                     </select>
+    
+                 </form>
+                </ModalComponent>
+                
             </div>
-        </Fragment>
+            
+        </>
     )
 }
 
 export default Login;
+
