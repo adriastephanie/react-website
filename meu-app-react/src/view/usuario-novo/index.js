@@ -31,12 +31,12 @@ function NovoUsuario() {
     return(
         <div className='form-cadastro'>
             <form className='text-center form-login mx-auto mt-5'>
-                <h1 className='h3 text-black font-weight-bold'>Cadastro</h1>
+                <h1 className='h3 text-black font-weight-bold'>Faça seu cadastro</h1>
 
                 <input onChange= {(e) => setEmail(e.target.value)} type="email" className='form-control my-2' placeholder="Email"></input>
                 <input onChange= {(e) => setSenha(e.target.value)} type="password" className='form-control my-2' placeholder="Senha"></input>
 
-                <button onClick={cadastrar} class="w-100 btn-lg btn-cadastro" type="button">Logar</button>
+                <button onClick={cadastrar} class="w-100 btn-lg btn-cadastro" type="button">Criar usuário</button>
 
                 <div className="mgs-login text-black text-center mx-2">
                     
