@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import './usuario-novo.css';
-import Navbar from '../../components/navbar'
+import Navbar from '../../components/NavBar';
 import firebase from '../../config/firebase';
 import 'firebase/auth';
 
@@ -60,20 +60,25 @@ function NovoUsuario() {
     }
     
     return(
-        <Fragment>
-
+        <>
             <Navbar/>
 
             <div className='form-cadastro'>
-                <form className='text-center form-login mx-auto mt-5'>
-                    <h1 className='h3 text-black font-weight-bold'>Cadastro</h1>
+                <form className='text-center form-login mx-auto mt-5 align-items-center'>
+                    <h1 className='h3 text-black font-weight-bold'>Faça seu cadastro!</h1>
 
-                    <input onChange= {(e) => setEmail(e.target.value)} type="email" className='form-control my-2' placeholder="Email"></input>
-                    <input onChange= {(e) => setSenha(e.target.value)} type="password" className='form-control my-2' placeholder="Senha"></input>
+                    <div class="form-floating mb-3">
+                        <input onChange= {(e) => setEmail(e.target.value)} type="email" className="form-control my-2" placeholder="Email" id="Email"></input>
+                        <label for="floatingInput">Email</label>
+                    </div>
 
+                    <div class="form-floating mb-3">
+                        <input onChange= {(e) => setSenha(e.target.value)} type="password" className="form-control my-2" placeholder="Senha" id="Senha"></input>
+                        <label for="floatingInput">Password</label>
+                    </div>
                     {
-                        carregando ? <div class="spinner-border text-info" role="status"><span class="sr-only">Loading...</span></div>
-                        : <button onClick={cadastrar} class="w-100 btn-lg btn-cadastro" type="button">Cadastre-se</button>
+                        carregando ? <div class="spinner-border text-info" role="status"><span className="sr-only">Loading...</span></div>
+                        : <button onClick={cadastrar} class="w-100 btn-lg btn-cadastro" type="button" id="Cadastrar">Cadastre-se</button>
                     }
 
                     
@@ -87,9 +92,8 @@ function NovoUsuario() {
                 </form>
 
             </div>
-        </Fragment>
+        </>
     )
-
 }
 
 export default NovoUsuario;

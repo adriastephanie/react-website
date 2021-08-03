@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import './login.css';
 import { Link, Redirect } from 'react-router-dom';
-import Navbar from '../../components/navbar';
+import Navbar from '../../components/NavBar';
 import firebase from '../../config/firebase';
 import 'firebase/auth';
 import {useSelector, useDispatch } from 'react-redux';
@@ -48,11 +48,13 @@ function Login(){
                         <h1 className="h3 mb-3 fw-normal text-black font-weight-bold">Faça seu Login</h1>
 
                         <div className="form-floating">
-                            <input onChange= {(e) => setEmail(e.target.value)} type="email" class="form-control my-2" id="floatingInput" placeholder="E-mail"/>
+                            <input onChange= {(e) => setEmail(e.target.value)} type="email" className="form-control my-2" id="floatingInput" placeholder="E-mail"/>
+                            <label for="floatingInput">Email</label>
                         </div>
 
                         <div className="form-floating">
-                            <input onChange= {(e) => setSenha(e.target.value)} type="password" class="form-control my-2" id="floatingPassword" placeholder="Senha"/>
+                            <input onChange= {(e) => setSenha(e.target.value)} type="password" className="form-control my-2" id="floatingPassword" placeholder="Senha"/>
+                            <label for="floatingPassword">Password</label>
                         </div>
 
                         <button onClick={Logar} class="w-100 btn btn-lg btn-login" type="button">Logar</button>
@@ -66,9 +68,9 @@ function Login(){
                         </div>
 
                         <div className="opcoes-login mt-3 text-center">
-                            <a href="#" className="mx-2">Quero recuperar minha senha</a>
+                            <a href="#" className="mx-2">Esqueceu a senha?</a>
                             <span>&#9733;</span>
-                            <Link to='novousuario' className="mx-2">Quero me cadastrar</Link>
+                            <Link to='novousuario' className="mx-2">Não tem uma conta?</Link>
                             <button className="w-100 btn btn-lg btn-login" type="button" onClick={handleModal}>Modal</button>
                             
 

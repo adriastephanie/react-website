@@ -19,6 +19,9 @@ Several open source projects are used to work correctly:
 - [Bootstrap](https://getbootstrap.com)
 - [ReactJS](https://pt-br.reactjs.org)
 - [Firebase](https://firebase.google.com/?hl=pt-br)
+- [Font Awesome](https://fontawesome.com)
+
+https://fontawesome.com
 
 ## Installation
 

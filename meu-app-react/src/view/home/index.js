@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './home.css';
 import {Link} from 'react-router-dom';
-import NavBar from '../../components/navbar';
+import NavBar from '../../components/NavBar';
 
 function Home(){
     return(
