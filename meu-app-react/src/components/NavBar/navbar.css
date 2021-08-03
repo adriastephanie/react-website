@@ -1,0 +1,13 @@
+.navbar{
+    background-color: rgb(194, 245, 211);
+}
+.navbar li{
+    font-size: 18px;
+    color: black;
+}
+.nav-item a:hover{
+    background-color: darkorange;
+}
+.nav-item a{
+    transition: 1s ease-in;
+}
