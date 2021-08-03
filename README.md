@@ -21,7 +21,6 @@ Several open source projects are used to work correctly:
 - [Firebase](https://firebase.google.com/?hl=pt-br)
 - [Font Awesome](https://fontawesome.com)
 
-https://fontawesome.com
 
 ## Installation
 
