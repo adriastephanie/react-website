@@ -7,6 +7,8 @@ function Home(){
     return(
         <>
             <NavBar/>
+            <h1>{useSelector(state => state.usuarioEmail)}</h1>
+            <h2>logado: {useSelector(state => state.usuarioLogado)}</h2>
         </>
     )
 }

@@ -18,7 +18,10 @@ function Login(){
     function Logar() {
         firebase.auth().signInWithEmailAndPassword(email, senha).then(resultado => {
             setMsgTipo('sucesso');
-            dispatch({type: 'LOG_IN', usuarioEmail: email });
+            setTimeout(() => {
+                dispatch({type: 'LOG_IN', usuarioEmail: email });
+
+            },2000);
             
 
         }).catch(erro => {
