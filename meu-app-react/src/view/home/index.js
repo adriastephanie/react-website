@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import './home.css';
-import {Link} from 'react-router-dom';
 import NavBar from '../../components/NavBar';
+import { useSelector } from 'react-redux';
 
 function Home(){
     return(
-        <h1>
+        <>
             <NavBar/>
-        </h1>
+        </>
     )
 }
 
