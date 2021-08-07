@@ -39,8 +39,8 @@ function Login(){
             {useSelector(state => state.usuarioLogado) > 0 ? <Redirect to='/' /> : null}
 
             <main className="form-signin mx-auto">
-                <form>
-                    
+                <form className="text-center mb-4">
+                    <i class="far fa-smile-wink fa-5x"></i>
                     <h1 className="h3 mb-3 fw-normal text-black font-weight-bold">Faça seu Login</h1>
 
                     <div className="form-floating">
@@ -62,7 +62,7 @@ function Login(){
                     </div>
 
                     <div className="opcoes-login mt-3 text-center">
-                        <a href="/novousuario" className="mx-2">Esqueceu a senha?</a>
+                        <Link to="/recuperarsenha" className="mx-2">Esqueceu a senha?</Link>
                         <span>&#9733;</span>
                         <Link to='novousuario' className="mx-2">Não tem uma conta?</Link>
                     </div>
