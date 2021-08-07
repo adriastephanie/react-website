@@ -4,7 +4,7 @@
 
 ## Features
 
-- Cnfigured project with Firebase, React and Bootstrap
+- Configured project with Firebase, React and Bootstrap
 - Upload and download images on Firebase Storage
 - Authenticating users with Firebase and React JS
 - Storing data in the Firebase Cloud Firestore
