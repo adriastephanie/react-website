@@ -12,13 +12,13 @@ export default function NavBar () {
    return (
 
     <nav className="navbar navbar-expand-lg">
-      <span className="navbar-brand text-black font-weight-bold">Logo</span>
+      <i class="far fa-smile-wink fa-2x"></i>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars text-black"></i>
       </button>
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul className="navbar-nav">
-          <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>
+          <li className="nav-item"><Link className="nav-link ml-2" to="/">Home</Link></li>
           {
             useSelector(state => state.usuarioLogado) > 0 ? 
             <>
