@@ -8,6 +8,40 @@ import NavBar from '../../components/NavBar';
 function EventoCadastro(){
 
     const [msgTipo, setMsgTipo] = useState();
+    const [titulo, setTitulo] = useState();
+    const [tipo, setTipo] = useState();
+    const [detalhe, setDetalhe] = useState();
+    const [data, setData] = useState();
+    const [hora, setHora] = useState();
+    const [foto, setFoto] = useState();
+    const usuarioEmail = useSelector(state => state.usuarioEmail);
+
+    const storage = firebase.storage();
+    const db = firebase.firestore();
+
+
+    function cadastrar(){
+        setMsgTipo(null);
+        
+        storage.ref(`imagens/${foto.name}`).put(foto).then(() => {
+            db.collection('eventos').add({
+                titulo: titulo,
+                tipo: tipo,
+                detalhe: detalhe,
+                data: data,
+                hora: hora,
+                usuario: usuarioEmail,
+                visualizacoes: 0,
+                foto: foto.name,
+                publico: 1,
+                criacao: new Date()
+            }).then(() => {
+                setMsgTipo('sucesso');
+            }).catch(erro => {
+                setMsgTipo('erro');
+        });
+    });
+}    
 
     return(
         <>
@@ -20,12 +54,12 @@ function EventoCadastro(){
                 <form className="form-group">
                     <div>
                         <label>Título:</label>
-                        <input type="text" className="form-control my-2" id="titulo-evento" placeholder="Título"/>
+                        <input onChange= {(e) => setTitulo(e.target.value)} type="text" className="form-control my-2" id="titulo-evento" placeholder="Título"/>
                     </div>
 
                     <div>
                         <label>Tipo do evento:</label>
-                        <select className="form-control" id="tipo-evento">
+                        <select onChange= {(e) => setTipo(e.target.value)} className="form-control" id="tipo-evento">
                             <option disabled selected value>Selecione um tipo</option>
                             <option>Festa</option>
                             <option>Teatro</option>
@@ -36,27 +70,27 @@ function EventoCadastro(){
 
                     <div className="form-group my-2">
                         <label>Descrição do evento:</label>
-                        <textarea className="form-control" rows="3" id="descricao-evento" placeholder="Descrição do evento">
+                        <textarea onChange= {(e) => setDetalhe(e.target.value)} className="form-control" rows="3" id="descricao-evento" placeholder="Descrição do evento">
 
                         </textarea>
                     </div>
                     <div className="form-group row">
                         <div className="col-6">
                             <label>Data:</label>
-                            <input type="date" className="form-control my-2" id="data-evento" placeholder="Data"/>
+                            <input onChange= {(e) => setData(e.target.value)} type="date" className="form-control my-2" id="data-evento" placeholder="Data"/>
                         </div>
                         <div className="col-6">
                             <label>Hora:</label>
-                            <input type="time" className="form-control my-2" id="hora-evento" placeholder="Data"/>
+                            <input onChange= {(e) => setHora(e.target.value)} type="time" className="form-control my-2" id="hora-evento" placeholder="Data"/>
                         </div>
                     </div>
 
                     <div>
                         <label>Upload da foto:</label>
-                        <input type="file" className="form-control my-2" id="upload-foto-evento"/>
+                        <input onChange= {(e) => setFoto(e.target.files[0])} type="file" className="form-control my-2" id="upload-foto-evento"/>
                     </div>
 
-                    <button  class="w-100 btn btn-lg btn-salvar" type="button">Salvar</button>
+                    <button onClick={cadastrar} class="w-100 btn btn-lg btn-salvar" type="button">Salvar</button>
 
                 </form>
 
