@@ -7,6 +7,7 @@ import NavBar from '../../components/NavBar';
 
 function EventoCadastro(){
 
+    const [carregando, setCarregando] = useState();
     const [msgTipo, setMsgTipo] = useState();
     const [titulo, setTitulo] = useState();
     const [tipo, setTipo] = useState();
@@ -22,6 +23,7 @@ function EventoCadastro(){
 
     function cadastrar(){
         setMsgTipo(null);
+        setCarregando(1);
         
         storage.ref(`imagens/${foto.name}`).put(foto).then(() => {
             db.collection('eventos').add({
@@ -37,8 +39,10 @@ function EventoCadastro(){
                 criacao: new Date()
             }).then(() => {
                 setMsgTipo('sucesso');
+                setCarregando(1);
             }).catch(erro => {
                 setMsgTipo('erro');
+                setCarregando(0);
         });
     });
 }    
@@ -90,7 +94,12 @@ function EventoCadastro(){
                         <input onChange= {(e) => setFoto(e.target.files[0])} type="file" className="form-control my-2" id="upload-foto-evento"/>
                     </div>
 
-                    <button onClick={cadastrar} class="w-100 btn btn-lg btn-salvar" type="button">Salvar</button>
+                    <div class="row">
+                        {
+                            carregando > 0 ? <div class="spinner-border text-info mx-auto" role="status"><span className="sr-only">Loading...</span></div>
+                        : <button onClick={cadastrar} class="w-100 btn btn-lg btn-salvar" type="button">Salvar</button>
+                        }
+                    </div>
 
                 </form>
 
