@@ -1,13 +1,14 @@
 .navbar{
-    background-color: rgb(194, 245, 211);
+    background-color: #eb9d8d;
 }
 .navbar li{
     font-size: 18px;
     color: black;
 }
 .nav-item a:hover{
-    background-color: darkorange;
+    background-color: #c5cba6;
 }
 .nav-item a{
     transition: 1s ease-in;
+    color: black;
 }

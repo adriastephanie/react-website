@@ -1,9 +1,9 @@
-.btn-salvar {
-    background-color:rgb(194, 245, 211);
-
+.btn-cadastro {
+    background-color: #614ea6;
+    color: #fff;
 }
 
-.btn-salvar:hover{
-
-    background-color: darkorange;
+.btn-cadastro:hover {
+    background-color: #f21667;
+    color: #fff;
 }
